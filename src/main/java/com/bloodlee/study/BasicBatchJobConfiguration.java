@@ -41,7 +41,7 @@ public class BasicBatchJobConfiguration extends DefaultBatchConfigurer {
 			@Override
 			public RepeatStatus execute(StepContribution contribution,
 					ChunkContext context) {
-				log.info("Tasklet");
+				log.info("=====> Tasklet");
 				return RepeatStatus.FINISHED;
 			}
 		};
@@ -50,13 +50,13 @@ public class BasicBatchJobConfiguration extends DefaultBatchConfigurer {
 
 	@Bean
 	public Job job() throws Exception {
-		log.info("Job");
+		log.info("=====> Job");
 		return this.jobs.get("job").start(step1()).build();
 	}
 
 	@Bean
 	protected Step step1() throws Exception {
-		log.info("Step1");
+		log.info("=====> Step1");
 		return this.steps.get("step1").tasklet(tasklet()).build();
 	}
 }
